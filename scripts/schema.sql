@@ -1,0 +1,31 @@
+CREATE DATABASE IF NOT EXISTS `ii-test`;
+USE `ii-test`;
+
+
+CREATE TABLE `Orders` (
+id INT(6) AUTO_INCREMENT PRIMARY KEY,
+user_id INT(6) DEFAULT 1,
+status VARCHAR(30) NOT NULL,
+created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+CREATE TABLE `Products` (
+id INT(6) AUTO_INCREMENT PRIMARY KEY,
+name VARCHAR(30) NOT NULL,
+merchant_id INT(6) DEFAULT 1,
+price INT(6) NOT NULL,
+status VARCHAR(30),
+created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+CREATE TABLE `order_items` (
+order_id INT(6),
+product_id INT(6),
+quantity INT(6),
+CONSTRAINT FOREIGN KEY (order_id) REFERENCES Orders(id),
+CONSTRAINT FOREIGN KEY (product_id) REFERENCES Products(id),
+CONSTRAINT PRIMARY KEY (order_id, product_id)
+);
+
+ALTER USER 'root' IDENTIFIED WITH mysql_native_password BY 'password';
+flush privileges ;
