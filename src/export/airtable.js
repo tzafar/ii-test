@@ -1,5 +1,3 @@
-require('dotenv').config()
-
 const airtable = require('airtable');
 
 airtable.configure({

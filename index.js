@@ -1,3 +1,4 @@
+require('dotenv').config()
 const express_app = require('./app')
 
 const on_port = process.env.PORT || 3000;
