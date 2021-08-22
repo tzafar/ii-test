@@ -2,44 +2,24 @@
 
 const Product = require('../models/product');
 
-// exports.list = function (req, res) {
-//     Product.list().then(
-//         (products) => {
-//             res.status(200).send(products)
-//         }
-//     );
-// };
+exports.list = async (req, res) => {
+    res.status(200).send(await Product.list())
+};
 
-exports.create_a_product = function (req, res) {
+exports.create_a_product = async (req, res) => {
     if (!req.body) {
         res.status(400).send({
             message: "Content can not be empty!"
         });
     }
 
-    const p = new Product(req.body.name,req.body.price);
-
-    Product.create(p, function(err, data) {
-        if(err) {
-            console.log(err)
-            res.status(500).send()
-        } else {
-            res.status(200).send(data)
-        }
-    })
+    const product = new Product(req.body.name,req.body.price)
+    res.status(200).send(await Product.create(product))
 };
 
-// exports.search = function (req, res) {
-//     console.log(req.query)
-//     Product.search(req.query.name).then(
-//         (products) => {
-//             if (products.length === 0) {
-//                 res.status(404).send();
-//             }
-//             res.status(200).send(products);
-//         }
-//     )
-// }
+exports.search = async (req, res) => {
+    res.status(200).send(await Product.search(req.query.orderId))
+}
 
 // exports.read_a_product = function (req, res) {
 //     ProductModel.findById(req.params.productId).then(

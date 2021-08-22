@@ -16,4 +16,14 @@ connection.connect(error => {
     console.log("Successfully connected to the database.");
 });
 
+connection.execute = (sql, args) => {
+    return new Promise((resolve, reject) => {
+        connection.query(sql, args, (err, results) => {
+            if (err)
+                return reject(err);
+            resolve(results);
+        });
+    });
+}
+
 module.exports = connection;
