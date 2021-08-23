@@ -2,11 +2,13 @@
 This API lets you create products, order, add products to orders and export the data periodically
 
 ## Local setup
+Follow these steps to run project locally. Please make sure that Docker engine is up and runninh
 1. Download the repository
 2. `cd` in that directory where the code is downloaded
 3. place the provided `.env` file in the root directory
-4. run `npm install`
-5. run `npm run start`
+4. Run `docker-compose up`
+5. run `npm install`
+6. run `npm run start`
 
 ## Endpoints
 ### Create a product
