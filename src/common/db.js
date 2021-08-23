@@ -27,7 +27,6 @@ execute = (sql, args) => {
 
 connection.select = async (query) => {
     try {
-        throw new Error('yeah')
         return await execute(query)
     } catch (e) {
         console.log('Error: ',e.message)
