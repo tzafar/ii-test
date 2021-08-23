@@ -6,23 +6,12 @@ const Order = function (userId = 1, status = 'active') {
 };
 
 Order.create = async (newOrder) => {
-    try {
-        let addedOrder = await sql.execute("INSERT INTO Orders SET ?", newOrder)
-        return {id: addedOrder.insertId, ...newOrder}
-    } catch (e) {
-        console.log(e)
-        //todo: throw error
-    }
+    let addedOrder = await sql.insert("INSERT INTO Orders SET ?", newOrder)
+    return {id: addedOrder.insertId, ...newOrder}
 };
 
 Order.list = async () => {
-    try {
-        let results = await sql.execute("SELECT * FROM Orders")
-        return results
-    } catch (e) {
-        console.log(e)
-        //todo: throw error
-    }
+    return await sql.select("SELECT * FROM Orders")
 };
 
 module.exports = Order
