@@ -8,8 +8,8 @@ const Product = function (name, price, merchantId = 1, status = 'active') {
 };
 
 Product.create = async (newProduct) => {
-        let addedProduct = await sql.insert("INSERT INTO Products SET ?", newProduct)
-        return {id: addedProduct.insertId, ...newProduct}
+    let addedProduct = await sql.insert("INSERT INTO Products SET ?", newProduct)
+    return {id: addedProduct.insertId, ...newProduct}
 };
 
 Product.list = async () => {

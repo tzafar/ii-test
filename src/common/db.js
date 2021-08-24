@@ -30,7 +30,7 @@ connection.select = async (query) => {
         return await execute(query)
     } catch (e) {
         console.log('Error: ',e.message)
-        respondWithError(500, "Couldn't execute sql query",)
+        respondWithError("Couldn't execute sql query.")
     }
 }
 
@@ -40,7 +40,7 @@ connection.insert = async (query, record) => {
         return {id: newRecord.insertId, ...record}
     } catch (e) {
         console.log('Error: ',e.message)
-        respondWithError(500, "Couldn't execute sql query",)
+        respondWithError("Couldn't execute sql query",)
     }
 }
 

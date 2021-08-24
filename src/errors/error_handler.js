@@ -22,7 +22,6 @@ class NotFound extends BaseError {
 }
 
 const handleError = (err, req, res, next) => {
-    console.log('handle error called')
     if (err instanceof BaseError) {
         return res.status(err.getCode()).json({
             message: err.message
@@ -35,8 +34,8 @@ const handleError = (err, req, res, next) => {
     });
 }
 
-const respondWithError = (httpStatus, message) => {
-    throw new BaseError(httpStatus, message)
+const respondWithError = (message) => {
+    throw new BaseError(message)
 }
 
 module.exports = {
